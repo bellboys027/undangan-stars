@@ -1,7 +1,6 @@
-const config = {
+export default {
   plugins: {
-    "@tailwindcss/postcss": {},
+    '@tailwindcss/postcss': {}, // Pake ini supaya Turbopack nggak bingung
+    autoprefixer: {},
   },
 };
-
-export default config;
