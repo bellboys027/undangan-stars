@@ -15,19 +15,39 @@ export default function Home() {
         .neon-glow { animation: neonPulse 3s infinite ease-in-out; }
         body { margin: 0; padding: 0; background: black; overflow-x: hidden; }
         body::-webkit-scrollbar { display: none; }
+
+        /* FIX UNTUK MOBILE: Kita pindahkan background ke elemen terpisah */
+        .bg-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          background-color: #000000;
+          background-image: 
+            radial-gradient(circle at top, rgba(217,119,6,0.25) 0%, transparent 70%),
+            url("https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?q=80&w=1920&auto=format&fit=crop"),
+            linear-gradient(rgba(217,119,6,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(217,119,6,0.05) 1px, transparent 1px);
+          background-size: 100% 600px, cover, 30px 30px, 30px 30px;
+          background-position: top center;
+        }
+
+        /* Vignette Gelap */
+        .vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle, transparent 20%, #000 100%);
+          z-index: 1;
+        }
       `}} />
 
+      <div className="bg-container">
+        <div className="vignette" />
+      </div>
+
       <div style={{
-        backgroundColor: '#000000',
-        backgroundImage: `
-          radial-gradient(circle at top, rgba(217,119,6,0.25) 0%, transparent 70%),
-          url("https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?q=80&w=1920&auto=format&fit=crop"),
-          linear-gradient(rgba(217,119,6,0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(217,119,6,0.05) 1px, transparent 1px)
-        `,
-        backgroundSize: '100% 100%, cover, 30px 30px, 30px 30px',
-        backgroundPosition: 'top center, center, center, center',
-        backgroundAttachment: 'fixed',
         minHeight: '100dvh',
         color: '#ffffff',
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -35,15 +55,11 @@ export default function Home() {
         justifyContent: 'center',
         alignItems: 'flex-start',
         position: 'relative',
+        zIndex: 10,
         padding: '20px'
       }}>
 
-        {/* VIGNETTE */}
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle, transparent 20%, #000 100%)', zIndex: 1, pointerEvents: 'none' }} />
-
         <main style={{
-          position: 'relative',
-          zIndex: 10,
           width: '100%',
           maxWidth: '450px',
           display: 'flex',
@@ -58,7 +74,7 @@ export default function Home() {
             width: '80%',
             marginBottom: '35px',
             padding: '10px',
-            border: '2px solid rgba(217,119,6,0.5)',
+            border: '1px solid rgba(217,119,6,0.5)',
             borderRadius: '24px',
             background: 'rgba(10,10,10,0.95)',
             backdropFilter: 'blur(10px)',
@@ -85,7 +101,7 @@ export default function Home() {
             <div style={{ height: '2px', width: '60px', background: '#d97706', margin: '15px auto 0' }} />
           </div>
 
-          {/* GRID TANGGAL & DESKRIPSI */}
+          {/* GRID TANGGAL */}
           <div style={{
             display: 'flex',
             alignItems: 'stretch',
@@ -104,13 +120,14 @@ export default function Home() {
               borderRadius: '20px',
               background: 'rgba(25,25,25,0.6)',
               backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
               position: 'relative',
               textAlign: 'center'
             }}>
               <span style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: '#d97706', color: '#000', fontSize: '8px', fontWeight: '900', padding: '2px 8px', borderRadius: '10px', whiteSpace: 'nowrap' }}>PHASE 1</span>
               <h3 style={{ fontSize: '9px', color: '#888', margin: '0', fontWeight: 'bold' }}>SOFT OPENING</h3>
               <p style={{ fontSize: '24px', fontWeight: '900', margin: '10px 0', color: '#fff' }}>1 MEI</p>
-              <p style={{ fontSize: '11px', color: '#fbbf24', fontWeight: '900', fontStyle: 'italic', margin: '0' }}>UJI COBA</p>
+              <p style={{ fontSize: '11px', color: '#fbbf24', fontWeight: '900', fontStyle: 'italic', margin: '0' }}>PROMO TERBATAS</p>
               <p style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', lineHeight: '1.4' }}>
                 Tahap uji operasional untuk penyempurnaan pelayanan.
               </p>
@@ -132,16 +149,15 @@ export default function Home() {
             }}>
               <img src="/bola8.png" style={{ position: 'absolute', right: '-15px', bottom: '-15px', width: '80px', opacity: 0.1, transform: 'rotate(15deg)' }} />
               <h3 style={{ fontSize: '9px', color: '#fbbf24', margin: '0', fontWeight: 'bold' }}>GRAND OPENING</h3>
-              <p style={{ fontSize: '24px', fontWeight: '900', margin: '10px 0', color: '#f59e0b' }}>5 MEI</p>
+              <p style={{ fontSize: '24px', fontWeight: '900', margin: '10px 0', color: '#f59e0b' }}>8 MEI</p>
               <p style={{ fontSize: '9px', color: '#eee', marginTop: '12px', lineHeight: '1.4', fontWeight: '500' }}>
-                Momen resmi pembukaan penuh dengan promo eksklusif!
+                Makan dan main gratis dari jam 10 pagi sampai jam 5 sore!
               </p>
             </div>
           </div>
 
           {/* BUTTONS SECTION */}
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            {/* LOKASI MAPS AKTIF */}
             <a
               href="https://share.google/u7Ar0FYWMZ11lbtQG"
               target="_blank"
@@ -149,7 +165,7 @@ export default function Home() {
               style={{
                 background: 'linear-gradient(180deg, #f59e0b, #d97706)',
                 color: '#000',
-                padding: '20px',
+                padding: '18px',
                 borderRadius: '18px',
                 fontWeight: '900',
                 textDecoration: 'none',
@@ -165,7 +181,6 @@ export default function Home() {
               LOKASI GOOGLE MAPS
             </a>
 
-            {/* WA AKTIF + NOMOR BARU */}
             <a
               href="https://wa.me/6282117377771?text=Halo%20Stars%20Billiard,%20saya%20ingin%20reservasi%20meja."
               target="_blank"
@@ -173,7 +188,7 @@ export default function Home() {
               style={{
                 border: '2px solid #d97706',
                 color: '#fbbf24',
-                padding: '20px',
+                padding: '18px',
                 borderRadius: '18px',
                 fontWeight: '900',
                 textDecoration: 'none',
@@ -192,7 +207,7 @@ export default function Home() {
             </a>
           </div>
 
-          <footer style={{ marginTop: '60px', paddingBottom: '20px', textAlign: 'center' }}>
+          <footer style={{ marginTop: '50px', paddingBottom: '20px', textAlign: 'center' }}>
             <p style={{ color: '#555', letterSpacing: '0.3em', fontSize: '10px', fontWeight: 'bold', margin: '0' }}>STARS BILLIARD & CAFE</p>
             <p style={{ color: '#333', fontSize: '9px', marginTop: '5px' }}>Banjarmasin, Kalimantan Selatan</p>
           </footer>
