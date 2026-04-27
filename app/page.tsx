@@ -5,15 +5,37 @@ import React from 'react';
 export default function Home() {
   return (
     <>
-      {/* --- HIASAN 1: ANIMASI NEON GLOW --- */}
+      {/* --- CSS KHUSUS ANIMASI MASUK --- */}
       <style dangerouslySetInnerHTML={{
         __html: `
+        /* 1. Animasi Masuk (Fade + Slide Up) */
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* 2. Animasi Neon Pulse (Yang Sudah Ada) */
         @keyframes neonPulse {
           0% { text-shadow: 0 0 10px rgba(245,158,11,0.5); }
           50% { text-shadow: 0 0 25px rgba(245,158,11,0.8), 0 0 40px rgba(217,119,6,0.4); }
           100% { text-shadow: 0 0 10px rgba(245,158,11,0.5); }
         }
+
+        /* Kelas untuk memicu animasi masuk */
+        .animate-in {
+          opacity: 0; /* Mulai dari transparan */
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Neon glow class */
         .neon-glow { animation: neonPulse 3s infinite ease-in-out; }
+
         body { margin: 0; padding: 0; background: black; overflow-x: hidden; }
         body::-webkit-scrollbar { display: none; }
 
@@ -27,10 +49,10 @@ export default function Home() {
           z-index: 0;
           background-color: #000000;
           background-image: 
-            radial-gradient(circle at top, rgba(217,119,6,0.15) 0%, transparent 60%), /* Sedikit dikurangi radialnya biar marmer makin jelas */
+            radial-gradient(circle at top, rgba(217,119,6,0.15) 0%, transparent 60%),
             url("https://images.unsplash.com/photo-1506318137071-a8e063b4bcc0?q=80&w=1920&auto=format&fit=crop"),
-            linear-gradient(rgba(217,119,6,0.03) 1px, transparent 1px), /* Dipertipis */
-            linear-gradient(90deg, rgba(217,119,6,0.03) 1px, transparent 1px); /* Dipertipis */
+            linear-gradient(rgba(217,119,6,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(217,119,6,0.03) 1px, transparent 1px);
           background-size: 100% 600px, cover, 30px 30px, 30px 30px;
           background-position: top center;
         }
@@ -39,7 +61,7 @@ export default function Home() {
         .vignette {
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle, transparent 30%, #000 100%); /* Vignette dikikis sedikit biar marmer di tengah makin jelas */
+          background: radial-gradient(circle, transparent 30%, #000 100%);
           z-index: 1;
         }
       `}} />
@@ -70,26 +92,23 @@ export default function Home() {
           paddingBottom: '40px'
         }}>
 
-          {/* LOGO SECTION - DIBUAT TEMBUS PANDANG (GLASSMORPHISM) */}
-          <div style={{
+          {/* 1. LOGO SECTION - GLASSMORPHISM + ANIMASI (No Delay) */}
+          <div className="animate-in" style={{
             width: '80%',
             marginBottom: '35px',
             padding: '10px',
-            border: '1px solid rgba(217,119,6,0.4)', /* Border diperhalus */
+            border: '1px solid rgba(217,119,6,0.4)',
             borderRadius: '24px',
-
-            /* --- KUNCI: EFEK KACA TEMBUS PANDANG --- */
-            background: 'rgba(20,20,20,0.6)', /* Background dibuat transparan */
-            backdropFilter: 'blur(15px)', /* Efek blur di belakang kotak */
-            WebkitBackdropFilter: 'blur(15px)', /* Fix buat iPhone/Safari */
-
+            background: 'rgba(20,20,20,0.6)',
+            backdropFilter: 'blur(15px)',
+            WebkitBackdropFilter: 'blur(15px)',
             boxShadow: '0 15px 40px rgba(0,0,0,0.7), 0 0 10px rgba(217,119,6,0.1)'
           }}>
             <img src="/logo-stars.png" alt="STARS Logo" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px' }} />
           </div>
 
-          {/* HEADLINE */}
-          <div style={{ marginBottom: '40px', textAlign: 'center' }}>
+          {/* 2. HEADLINE + ANIMASI (Delay 0.3s) */}
+          <div className="animate-in" style={{ marginBottom: '40px', textAlign: 'center', animationDelay: '0.3s' }}>
             <p style={{ color: '#fbbf24', letterSpacing: '0.4em', fontSize: '10px', fontWeight: '800', marginBottom: '8px' }}>EXCLUSIVE INVITATION</p>
             <h1 className="neon-glow" style={{
               fontSize: '52px',
@@ -105,13 +124,14 @@ export default function Home() {
             <div style={{ height: '2px', width: '60px', background: '#d97706', margin: '15px auto 0' }} />
           </div>
 
-          {/* GRID TANGGAL - DIBUAT LEBIH TRANSPARAN */}
-          <div style={{
+          {/* 3. GRID TANGGAL - LEBIH TRANSPARAN + ANIMASI (Delay 0.6s) */}
+          <div className="animate-in" style={{
             display: 'flex',
             alignItems: 'stretch',
             gap: '12px',
             width: '100%',
-            marginBottom: '40px'
+            marginBottom: '40px',
+            animationDelay: '0.6s'
           }}>
             {/* Box Soft Opening */}
             <div style={{
@@ -119,15 +139,12 @@ export default function Home() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-start',
-              border: '1px solid rgba(255,255,255,0.08)', /* Border sangat tipis */
+              border: '1px solid rgba(255,255,255,0.08)',
               padding: '25px 10px',
               borderRadius: '20px',
-
-              /* --- KUNCI: EFEK KACA TEMBUS PANDANG --- */
-              background: 'rgba(30,30,30,0.5)', /* Transparan parah */
+              background: 'rgba(30,30,30,0.5)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-
               position: 'relative',
               textAlign: 'center'
             }}>
@@ -146,15 +163,12 @@ export default function Home() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-start',
-              border: '2px solid rgba(245,158,11,0.6)', /* Border emas transparan */
+              border: '2px solid rgba(245,158,11,0.6)',
               padding: '25px 10px',
               borderRadius: '20px',
-
-              /* --- KUNCI: EFEK KACA TEMBUS PANDANG --- */
-              background: 'linear-gradient(135deg, rgba(35,35,35,0.5), rgba(10,10,10,0.7))', /* Gradien transparan */
+              background: 'linear-gradient(135deg, rgba(35,35,35,0.5), rgba(10,10,10,0.7))',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-
               position: 'relative',
               overflow: 'hidden',
               textAlign: 'center'
@@ -168,8 +182,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* BUTTONS SECTION - DIBUAT TRANSPARAN JUGA */}
-          <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          {/* 4. BUTTONS SECTION - TRANSPARAN + ANIMASI (Delay 0.9s) */}
+          <div className="animate-in" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '15px', animationDelay: '0.9s' }}>
             <a
               href="https://share.google/u7Ar0FYWMZ11lbtQG"
               target="_blank"
@@ -198,7 +212,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                border: '2px solid rgba(217,119,6,0.6)', /* Border diperhalus */
+                border: '2px solid rgba(217,119,6,0.6)',
                 color: '#fbbf24',
                 padding: '18px',
                 borderRadius: '18px',
@@ -209,9 +223,7 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '10px',
-
-                /* --- KUNCI: EFEK KACA TEMBUS PANDANG --- */
-                background: 'rgba(217,119,6,0.08)', /* Sedikit warna emas transparan */
+                background: 'rgba(217,119,6,0.08)',
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)'
               }}
@@ -221,7 +233,7 @@ export default function Home() {
             </a>
           </div>
 
-          <footer style={{ marginTop: '60px', paddingBottom: '20px', textAlign: 'center' }}>
+          <footer className="animate-in" style={{ marginTop: '60px', paddingBottom: '20px', textAlign: 'center', animationDelay: '1.2s' }}>
             <p style={{ color: '#555', letterSpacing: '0.3em', fontSize: '10px', fontWeight: 'bold', margin: '0' }}>STARS BILLIARD & CAFE</p>
             <p style={{ color: '#333', fontSize: '9px', marginTop: '5px' }}>Banjarmasin, Kalimantan Selatan</p>
           </footer>
