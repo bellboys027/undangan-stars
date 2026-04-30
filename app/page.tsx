@@ -5,10 +5,9 @@ import React from 'react';
 export default function Home() {
   return (
     <>
-      {/* --- CSS KHUSUS ANIMASI MASUK --- */}
+      {/* --- CSS UNTUK ANIMASI DAN STYLE DASAR --- */}
       <style dangerouslySetInnerHTML={{
         __html: `
-        /* 1. Animasi Masuk (Fade + Slide Up) */
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -20,26 +19,22 @@ export default function Home() {
           }
         }
 
-        /* 2. Animasi Neon Pulse (Yang Sudah Ada) */
         @keyframes neonPulse {
           0% { text-shadow: 0 0 10px rgba(245,158,11,0.5); }
           50% { text-shadow: 0 0 25px rgba(245,158,11,0.8), 0 0 40px rgba(217,119,6,0.4); }
           100% { text-shadow: 0 0 10px rgba(245,158,11,0.5); }
         }
 
-        /* Kelas untuk memicu animasi masuk */
         .animate-in {
-          opacity: 0; /* Mulai dari transparan */
+          opacity: 0;
           animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        /* Neon glow class */
         .neon-glow { animation: neonPulse 3s infinite ease-in-out; }
 
         body { margin: 0; padding: 0; background: black; overflow-x: hidden; }
         body::-webkit-scrollbar { display: none; }
 
-        /* FIX UNTUK MOBILE: Kita pindahkan background ke elemen terpisah */
         .bg-container {
           position: fixed;
           top: 0;
@@ -57,7 +52,6 @@ export default function Home() {
           background-position: top center;
         }
 
-        /* Vignette Gelap */
         .vignette {
           position: absolute;
           inset: 0;
@@ -92,7 +86,7 @@ export default function Home() {
           paddingBottom: '40px'
         }}>
 
-          {/* 1. LOGO SECTION - GLASSMORPHISM + ANIMASI (No Delay) */}
+          {/* 1. LOGO SECTION - GLASSMORPHISM */}
           <div className="animate-in" style={{
             width: '80%',
             marginBottom: '35px',
@@ -107,7 +101,7 @@ export default function Home() {
             <img src="/logo-stars.png" alt="STARS Logo" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px' }} />
           </div>
 
-          {/* 2. HEADLINE + ANIMASI (Delay 0.3s) */}
+          {/* 2. HEADLINE */}
           <div className="animate-in" style={{ marginBottom: '40px', textAlign: 'center', animationDelay: '0.3s' }}>
             <p style={{ color: '#fbbf24', letterSpacing: '0.4em', fontSize: '10px', fontWeight: '800', marginBottom: '8px' }}>EXCLUSIVE INVITATION</p>
             <h1 className="neon-glow" style={{
@@ -124,7 +118,7 @@ export default function Home() {
             <div style={{ height: '2px', width: '60px', background: '#d97706', margin: '15px auto 0' }} />
           </div>
 
-          {/* 3. GRID TANGGAL - LEBIH TRANSPARAN + ANIMASI (Delay 0.6s) */}
+          {/* 3. GRID TANGGAL */}
           <div className="animate-in" style={{
             display: 'flex',
             alignItems: 'stretch',
@@ -182,10 +176,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 4. BUTTONS SECTION - TRANSPARAN + ANIMASI (Delay 0.9s) */}
+          {/* 4. BUTTONS SECTION */}
           <div className="animate-in" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '15px', animationDelay: '0.9s' }}>
+            {/* LOKASI GOOGLE MAPS (Updated Link Aman) */}
             <a
-              href="https://share.google/u7Ar0FYWMZ11lbtQG"
+              href="https://www.google.com/maps/search/?api=1&query=Stars+Billiard+Pemurus+Luar+Banjarmasin"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -207,6 +202,7 @@ export default function Home() {
               LOKASI GOOGLE MAPS
             </a>
 
+            {/* RESERVASI WHATSAPP (Updated Nomor 08134236463) */}
             <a
               href="https://wa.me/628134236463?text=Halo%20Stars%20Billiard,%20saya%20ingin%20reservasi%20meja."
               target="_blank"
