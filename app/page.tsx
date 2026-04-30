@@ -86,7 +86,7 @@ export default function Home() {
           paddingBottom: '40px'
         }}>
 
-          {/* 1. LOGO SECTION - Tetap memanggil logo-stars.png agar tidak berubah */}
+          {/* 1. LOGO SECTION */}
           <div className="animate-in" style={{
             width: '80%',
             marginBottom: '35px',
@@ -127,7 +127,7 @@ export default function Home() {
             marginBottom: '40px',
             animationDelay: '0.6s'
           }}>
-            {/* Box Soft Opening */}
+            {/* Box Soft Opening - UPDATED TEXT */}
             <div style={{
               flex: 1,
               display: 'flex',
@@ -145,9 +145,9 @@ export default function Home() {
               <span style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: '#d97706', color: '#000', fontSize: '8px', fontWeight: '900', padding: '2px 8px', borderRadius: '10px', whiteSpace: 'nowrap', boxShadow: '0 4px 10px rgba(0,0,0,0.5)' }}>PHASE 1</span>
               <h3 style={{ fontSize: '9px', color: '#888', margin: '0', fontWeight: 'bold' }}>SOFT OPENING</h3>
               <p style={{ fontSize: '24px', fontWeight: '900', margin: '10px 0', color: '#fff' }}>1 MEI</p>
-              <p style={{ fontSize: '11px', color: '#fbbf24', fontWeight: '900', fontStyle: 'italic', margin: '0' }}>PROMO TERBATAS</p>
+              <p style={{ fontSize: '11px', color: '#fbbf24', fontWeight: '900', fontStyle: 'italic', margin: '0' }}>HARGA DISKON</p>
               <p style={{ fontSize: '9px', color: '#ccc', marginTop: '12px', lineHeight: '1.4' }}>
-                Nikmati penawaran promo spesial selama tahap uji coba operasional.
+                Buka jam 1 siang (habis Sholat Jumat). Nikmati harga diskon selama soft opening!
               </p>
             </div>
 
