@@ -86,7 +86,7 @@ export default function Home() {
           paddingBottom: '40px'
         }}>
 
-          {/* 1. LOGO SECTION - GLASSMORPHISM */}
+          {/* 1. LOGO SECTION */}
           <div className="animate-in" style={{
             width: '80%',
             marginBottom: '35px',
@@ -178,9 +178,9 @@ export default function Home() {
 
           {/* 4. BUTTONS SECTION */}
           <div className="animate-in" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '15px', animationDelay: '0.9s' }}>
-            {/* LOKASI GOOGLE MAPS (Updated Link Aman) */}
+            {/* LOKASI GOOGLE MAPS - MENGGUNAKAN PLUS CODE ALAMAT BARU */}
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Stars+Billiard+Pemurus+Luar+Banjarmasin"
+              href="https://www.google.com/maps/search/?api=1&query=MJ7H%2B89P+Banjarmasin"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -202,7 +202,7 @@ export default function Home() {
               LOKASI GOOGLE MAPS
             </a>
 
-            {/* RESERVASI WHATSAPP (Updated Nomor 08134236463) */}
+            {/* RESERVASI WHATSAPP */}
             <a
               href="https://wa.me/628134236463?text=Halo%20Stars%20Billiard,%20saya%20ingin%20reservasi%20meja."
               target="_blank"
