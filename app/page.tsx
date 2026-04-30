@@ -208,7 +208,7 @@ export default function Home() {
             </a>
 
             <a
-              href="https://wa.me/6282117377771?text=Halo%20Stars%20Billiard,%20saya%20ingin%20reservasi%20meja."
+              href="https://wa.me/628134236463?text=Halo%20Stars%20Billiard,%20saya%20ingin%20reservasi%20meja."
               target="_blank"
               rel="noopener noreferrer"
               style={{
